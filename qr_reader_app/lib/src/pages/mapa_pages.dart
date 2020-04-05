@@ -19,30 +19,51 @@ class MapaPage extends StatelessWidget {
           ),
         ],
       ),
-      body: Center()//-------------------_crearFlutterMap(scan)
+      body: _crearFlutterMap(scan)
     );
   }
 
-  //-------------------Widget _crearFlutterMap( ScanModel scan ){
-    //-------------------return FlutterMap(
-      //-------------------options: MapOptions(
-        //-------------------center: scan.getLatLng(),
-        //-------------------zoom: 10.0
-      //-------------------),
-      //-------------------layers: [
-        //-------------------_crearMapa()
-      //-------------------],
-    //-------------------);
-  //-------------------}
+  Widget _crearFlutterMap( ScanModel scan ){
+    return FlutterMap(
+      options: MapOptions(
+        center: scan.getLatLng(),
+        zoom: 15.0
+      ),
+      layers: [
+        _crearMapa(),
+        _crearMarcadores(scan)
+      ],
+    );
+  }
 
-  //-------------------_crearMapa(){
-    //-------------------return TileLayerOptions(
-      //-------------------urlTemplate: 'https://api.mapbox.com/v4/'
-      //-------------------'{id}/{z}/{x}/{y}@2x.png?access_token={accessToken}',
-      //-------------------additionalOptions: {
-        //-------------------'accessToken': 'pk.eyJ1IjoicGVyY3l0b21pY2hhIiwiYSI6ImNrOG5jY2xyYjB3dWszbXB6Y2gxM3dwOWoifQ.pX0hu0prmdLQABMwsijDSg',
-        //-------------------'id': 'mapbox.streets'
-      //-------------------}
-    //-------------------);
-  //-------------------}
+  _crearMapa(){
+    return TileLayerOptions(
+      urlTemplate: 'https://api.mapbox.com/v4/'
+      '{id}/{z}/{x}/{y}@2x.png?access_token={accessToken}',
+      additionalOptions: {
+        'accessToken': 'pk.eyJ1IjoicGVyY3l0b21pY2hhIiwiYSI6ImNrOG5jY2xyYjB3dWszbXB6Y2gxM3dwOWoifQ.pX0hu0prmdLQABMwsijDSg',
+        'id': 'mapbox.dark'
+        //streets, dark, light, outdoors, satellite
+      }
+    );
+  }
+  _crearMarcadores( ScanModel scan ){
+    return MarkerLayerOptions(
+      markers: <Marker>[
+        Marker(
+          width: 100.0,
+          height: 100.0,
+          point: scan.getLatLng(),
+          builder: (context) => Container(
+            //color: Colors.red,
+            child: Icon(  //new FlutterLogo(),
+              Icons.location_on,
+              size: 40.0,
+              color: Theme.of(context).primaryColor,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 }
