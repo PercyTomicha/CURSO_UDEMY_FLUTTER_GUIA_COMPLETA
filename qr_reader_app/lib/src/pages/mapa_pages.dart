@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//-------------------import 'package:flutter_map/flutter_map.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:qr_reader_app/src/models/scan_model.dart';
 //import 'package:latlong/latlong.dart';
 
