@@ -9,6 +9,9 @@ class MapasPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    scansBloc.obtenerScans();
+
     return StreamBuilder<List<ScanModel>>( //FutureBuilder<List<ScanModel>>(
       stream: scansBloc.scansStream, //future: DBProvider.db.getTodosScans(),
       builder: (BuildContext context, AsyncSnapshot<List<ScanModel>> snapshot){
