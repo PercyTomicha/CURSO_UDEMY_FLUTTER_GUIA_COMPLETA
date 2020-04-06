@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> {
           title: Text('Mapas')
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.brightness_5),
+          icon: Icon(Icons.find_in_page),
           title: Text('Direcciones')
         ),
       ],

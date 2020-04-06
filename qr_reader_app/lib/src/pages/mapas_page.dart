@@ -36,7 +36,7 @@ class MapasPage extends StatelessWidget {
             ),
             onDismissed: (direction) => scansBloc.borrarScan(scans[i].id), //DBProvider.db.deleteScan(scans[i].id),
             child: ListTile(
-              leading: Icon(Icons.cloud_queue, color: Theme.of(context).primaryColor ),
+              leading: Icon(Icons.map, color: Theme.of(context).primaryColor ),
               title: Text(scans[i].valor),
               subtitle: Text('ID : ${scans[i].id}'),
               onTap: () => utils.abrirScan(context,scans[i]), //Se Abre en el Navegador
